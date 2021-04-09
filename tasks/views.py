@@ -48,3 +48,15 @@ def deleteTask(request, pk):
         'task' : task
     }
     return render(request, 'tasks/delete.html', context)
+
+def crossTask(request, pk):
+    task = Task.objects.get(id=pk)
+    task.complete = True
+    task.save()
+    return redirect('/')
+
+def uncrossTask(request, pk):
+    task = Task.objects.get(id=pk)
+    task.complete = False
+    task.save()
+    return redirect('/')

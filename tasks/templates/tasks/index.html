@@ -69,10 +69,11 @@
 
 
 			{% if task.complete == True %}
-			<span><input class="checkbox" type="checkbox", value="clicked", name="c{{task.id}}" checked><s>{{task}}</s></span>
+				<span><a class="btn btn-sm" href="{% url 'uncross_task' task.id %}">✘</a><s>{{task}}</s></span>
 			{% else %}
-			<span><input class="checkbox" type="checkbox", value="clicked", name="c{{item.id}}">{{task}}</span>
+				<span><a class="btn btn-sm" href="{% url 'cross_task' task.id %}">✔︎</a>{{task}}</span>
 			{% endif %}
+			
 		</div>
 	{% endfor %}
 	</div>
