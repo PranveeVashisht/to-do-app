@@ -45,6 +45,11 @@
 		border-color: #e59400;
 	}
 
+	.checkbox{
+		display: inline-block;
+		width: 5%;
+	}
+
 </style>
 
 <div class="center-column">
@@ -62,10 +67,11 @@
 			<a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
 			<a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
 
+
 			{% if task.complete == True %}
-			<s>{{task}}</s>
+			<span><input class="checkbox" type="checkbox", value="clicked", name="c{{task.id}}" checked><s>{{task}}</s></span>
 			{% else %}
-			<span>{{task}}</span>
+			<span><input class="checkbox" type="checkbox", value="clicked", name="c{{item.id}}">{{task}}</span>
 			{% endif %}
 		</div>
 	{% endfor %}
