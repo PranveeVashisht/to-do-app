@@ -6,4 +6,5 @@ class TasksConfig(AppConfig):
 
     def ready(self):
         from . import clock
+        clock.fetch_data()
         clock.start()
