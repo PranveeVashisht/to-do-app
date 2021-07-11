@@ -1,3 +1,5 @@
+import json, requests
+
 from django.shortcuts import render, redirect
 
 from .models import Task
@@ -60,3 +62,23 @@ def uncrossTask(request, pk):
     task.complete = False
     task.save()
     return redirect('/')
+
+def projects(request):
+    """Here we'll read data from a json file and pass it to projects.html"""
+    final = []
+    with open('tasks/api.json') as json_data:
+        my_var = json.load(json_data)
+        for i in range(len(my_var)):
+            projects = {}
+            project_name = my_var[i]['name']
+            url = my_var[i]['html_url']
+            projects["name"] = project_name
+            projects["url"] = url
+
+            final.append(projects)
+
+    context = {
+        'projects' : final
+    }
+
+    return render(request, 'tasks/projects.html', context)
