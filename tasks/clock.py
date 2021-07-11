@@ -1,12 +1,25 @@
-import json, requests
-from apscheduler.schedulers.blocking import BlockingScheduler
-sched = BlockingScheduler()
+import requests
+from .models import Project
 
-def my_scheduled_job():
-    """Function to fetch json data from github api periodically"""
+from apscheduler.schedulers.background import BackgroundScheduler
+count = 0
+def fetch_data():
+    """
+    Fetch data periodically using Github API and store in database
+    """
     response = requests.get("https://api.github.com/orgs/Servatom/repos")
-    with open("api.json", mode='w') as file:
-        json.dump(response.json(), file)
-
-sched.add_job(my_scheduled_job, 'interval', minutes=2)
-sched.start()
+    global count
+    count+=1
+    print(count)
+    data = response.json()
+    
+    for repo in data:
+        Project.objects.get_or_create(
+            title = repo['name'],
+            url = repo['html_url']
+        )
+    
+def start():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(fetch_data, 'interval', seconds=120)
+    scheduler.start()
