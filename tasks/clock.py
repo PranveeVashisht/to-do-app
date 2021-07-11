@@ -1,5 +1,5 @@
 import requests
-from tasks.models import Project
+from .models import Project
 
 from apscheduler.schedulers.background import BackgroundScheduler
 count = 0
