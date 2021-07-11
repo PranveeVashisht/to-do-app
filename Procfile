@@ -1,2 +1,2 @@
 web: gunicorn todo.wsgi --log-file -
-clock: python tasks/clock.py
+clock: python tasks.clock.py
