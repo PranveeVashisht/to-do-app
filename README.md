@@ -15,3 +15,5 @@ A To-Do App made using django that handles simple Create, Update and Delete oper
 - Commit your changes (`git commit -am 'Added <filename>'`)
 - Push to the branch (`git push upstream main`)
 - Create a Pull Request 
+
+If your PR is merged, the contents of your file should appear on <a href="https://hacktober-todo.herokuapp.com"> https://hacktober-todo.herokuapp.com </a>
