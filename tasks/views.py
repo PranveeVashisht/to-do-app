@@ -1,8 +1,6 @@
-import json, requests
-
 from django.shortcuts import render, redirect
 
-from .models import Task, Project
+from .models import Task
 from .forms import TaskForm
 
 def index(request):
@@ -62,10 +60,3 @@ def uncrossTask(request, pk):
     task.complete = False
     task.save()
     return redirect('/')
-
-def projects(request):
-    context = {
-        'projects' : Project.objects.all()
-    }
-
-    return render(request, 'tasks/projects.html', context)

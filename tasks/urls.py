@@ -6,6 +6,5 @@ urlpatterns = [
     path('update/<int:pk>/', views.updateTask, name="update_task"),
     path('delete/<int:pk>/', views.deleteTask, name="delete_task"),
     path('cross/<int:pk>/', views.crossTask, name="cross_task"),
-    path('uncross/<int:pk>/', views.uncrossTask, name="uncross_task"),
-    path('projects/', views.projects, name="projects")
+    path('uncross/<int:pk>/', views.uncrossTask, name="uncross_task")
 ]
