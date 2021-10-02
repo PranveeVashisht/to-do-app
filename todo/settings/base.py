@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Application definition
 
 INSTALLED_APPS = [
-    'tasks',
+    'tasks.apps.TasksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
